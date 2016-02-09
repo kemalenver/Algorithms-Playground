@@ -52,8 +52,8 @@ func selectionSort<T: Comparable>(inout array: [T]) {
 
 
 /*:
-2. Insertion Sort
-Has O(n2) time complexity
+    2. Insertion Sort
+    Has O(n2) time complexity
 */
 
 func insert<T: Comparable>(inout array: [T], rightIndex: Int, value: T) {
@@ -82,8 +82,8 @@ func insertionSort<T: Comparable>(inout array: [T]) {
 
 
 /*:
-3. Merge Sort
-Has O(n log n) time complexity
+    3. Merge Sort
+    Has O(n log n) time complexity
 */
 
 func merge<T: Comparable>(inout array: [T], p : Int, q: Int, r: Int) {
@@ -161,8 +161,8 @@ func mergeSort<T: Comparable>(inout array: [T], p: Int, r: Int) {
 
 
 /*:
-3. Quick Sort
-Has O(n log n) time complexity.  Worst case is not as good as merge sort but in practice is generally better overall
+    4. Quick Sort
+    Has O(n log n) time complexity.  Worst case is not as good as merge sort but in practice is generally better overall
 */
 
 func partition<T: Comparable>(inout array: [T], p: Int, r: Int) -> Int {
@@ -200,7 +200,9 @@ func quickSort<T: Comparable>(inout array: [T], p: Int, r: Int) {
     }
 }
 
-// Tests!
+/*:
+    Example Tests
+*/
 
 var array1 = [2, 3, 16, 123, 1, 34535, 12, 654, 2, -3, 0x10]
 selectionSort(&array1)

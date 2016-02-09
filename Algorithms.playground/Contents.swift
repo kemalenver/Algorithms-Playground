@@ -1,19 +1,28 @@
 import Cocoa;
 import XCPlayground // Set Xcode to MacOS, not IOS
 
-/*: 
-    1. Selection Sort
-    Has O(n2) time complexity
+
+/*:
+    Generic functions used by algorithms
+    
+    Array swap
 */
 
 func swapArrayValues<T: Comparable>(inout array: [T], indexA: Int, indexB: Int) {
-
+    
     let temp = array[indexA]
     
     array[indexA] = array[indexB]
     
     array[indexB] = temp
 }
+
+
+/*:
+    1. Selection Sort
+    Has O(n2) time complexity
+*/
+
 
 func indexOfMin<T: Comparable>(array: [T], startIndex: Int) -> Int {
  
@@ -151,6 +160,45 @@ func mergeSort<T: Comparable>(inout array: [T], p: Int, r: Int) {
 }
 
 
+/*:
+3. Quick Sort
+Has O(n log n) time complexity.  Worst case is not as good as merge sort but in practice is generally better overall
+*/
+
+func partition<T: Comparable>(inout array: [T], p: Int, r: Int) -> Int {
+    
+    var q = p
+    
+    for var j = q; j < r; j++ {
+        
+        if array[j] <= array[r] {
+            
+            
+            if array[j] <= array[r] {
+                
+                swapArrayValues(&array, indexA: j, indexB: q)
+                q++
+            }
+            
+        }
+    
+    }
+    
+    swapArrayValues(&array, indexA: r, indexB: q)
+    
+    return q
+}
+
+func quickSort<T: Comparable>(inout array: [T], p: Int, r: Int) {
+    
+    if p < r {
+        
+        let q = partition(&array, p: p, r: r)
+        
+        quickSort(&array, p: p, r: q - 1)
+        quickSort(&array, p: q + 1, r: r)
+    }
+}
 
 // Tests!
 
@@ -163,8 +211,8 @@ insertionSort(&array2)
 var array3 = [2, 3, 16, 123, 1, 34535, 12, 654, 2, -3, 0x10]
 mergeSort(&array3, p: 0, r: array3.count-1)
 
-
-
+var array4 = [2, 3, 16, 123, 1, 34535, 12, 654, 2, -3, 0x10]
+quickSort(&array4, p: 0, r: array4.count-1)
 
 
 

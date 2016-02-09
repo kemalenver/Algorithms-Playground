@@ -42,9 +42,31 @@ func selectionSort<T: Comparable>(inout array: [T]) {
 }
 
 
+/*:
+2. Insertion Sort
+Has O(n2) time complexity
+*/
+
+func insert<T: Comparable>(inout array: [T], rightIndex: Int, value: T) {
+    
+    var position = rightIndex
+    
+    while position >= 0 && array[position] > value {
+        
+        array[position+1] = array[position]
+        position--
+    }
+    
+    array[position+1] = value
+
+}
 
 func insertionSort<T: Comparable>(inout array: [T]) {
 
+    for var i = 1; i < array.count; i++ {
+        
+        insert(&array, rightIndex: i-1, value: array[i])
+    }
     
 }
 
